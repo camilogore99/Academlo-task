@@ -19,8 +19,6 @@ export const token = async () => {
 			requestOptions
 		)
 		const token = await res.text()
-		console.log(token)
-
 		return token
 	} catch (error) {
 		console.error(error)

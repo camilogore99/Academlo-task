@@ -1,7 +1,6 @@
+import { token } from 'utils/token'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { token } from 'utils/token'
-import { useToken } from '../Hooks/useToken'
 
 const initialInputs = {
 	email: 'erik@academlo.com',
@@ -21,7 +20,12 @@ export const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		const tokenAcces = await token()
-		tokenAcces ? navigate(`/task/${tokenAcces}`) : setError(true)
+		if (tokenAcces) {
+			navigate(`/task`)
+			localStorage.setItem('token', JSON.stringify({ token: tokenAcces }))
+		} else {
+			setError(true)
+		}
 	}
 
 	return (
