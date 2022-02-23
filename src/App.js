@@ -1,8 +1,13 @@
+import { Route, Routes } from 'react-router-dom'
+import { Tasks } from 'components/Tasks'
+import { Login } from 'components/Auth/Login'
 import './App.css'
-
 function App() {
 	return (
-		<div className='App'>va quedar todo cofigurado para la ueb tecnia</div>
+		<Routes>
+			<Route index element={<Login />} />
+			<Route path='/task/:token' element={<Tasks />} />
+		</Routes>
 	)
 }
 
